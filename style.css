@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 3%;
+  height: 3%;
+}
+
+body {
+  width: 100%;
+  font-family: "Montserrat", serif;
+}
+
+table,
+.search-bar {
+  width: 95%;
+  margin: 30px auto;
+}
+
+table,
+tbody,
+thead,
+tr,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table td,
+h1 {
+  text-align: center;
+}
+
+h1 {
+  padding: 1em;
+}
+
+.search-bar {
+  text-align: center;
+  position: relative;
+}
+
+.search-bar p{
+  color: #808080;
+  position: absolute;
+  left: 50%;
+  top: 80px;
+}
+
+.change-units {
+  width: 100%;
+  padding: 0 2%;
+}
+
+.change-units button {
+  border: 1px solid #254262;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.change-units button:hover {
+  border: 1px solid white;
+  cursor: pointer;
+  background: #254262;
+  color: #fafafa;
+}
+
+.search-bar button,
+.search-bar input,
+.change-units button {
+  font-family: "Montserrat", serif;
+  padding: 1% 2%;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  background: #51e4ba;
+  color: #149da5;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  border: 1px solid #51e4ba;
+}
+
+input:active,
+input:focus-within,
+input:focus-visible,
+input:focus {
+  border: 1px solid #149da5;
+  outline: none;
+}
