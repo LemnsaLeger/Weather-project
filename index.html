@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>weather forecast</title>
+  </head>
+  <body>
+    <h1>WEATHER FORECASTER</h1>
+
+    <section class="search-bar">
+      <input type="text" id="input" placeholder="Input a Country.."/>
+      <button type="button" id="search">search</button>
+      <p class="loader"></p>
+    </section>
+
+    <section class="change-units">
+        <button id="celsius">celcius</button>
+        <button id="farenheit">farenheit</button>
+    </section>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S/N</th>
+          <th scope="col">City/Country</th>
+          <th scope="col">City</th>
+          <th scope="col">Temperature(min:max)</th>
+          <th scope="col">Local Time</th>
+          <th scope="col">Description</th>
+          <th scope="col">Time taken</th>
+          <th scope="col">Icon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr>
+          <th scope="row">1</th>
+          <td>Cameroon</td>
+          <td>Yaounde</td>
+          <td>30</td>
+        </tr> -->
+        <!-- <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr> -->
+      </tbody>
+    </table>
+
+    <script src="app.js"></script>
+  </body>
+</html>
