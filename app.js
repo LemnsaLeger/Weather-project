@@ -40,17 +40,16 @@ async function fetchWeatherInfoForCountry(name) {
 const dataObj = (obj) => {
   fetchedData.push(obj);
   const index = fetchedData.indexOf(obj);
-
   updateDOM(
     index,
     obj,
-    obj.timeTakenToFetch,
-    fetchGIF(obj.dataFromServer.icon)
+    obj.timeTakenToFetch
   );
 };
 
 const fetchGIF = async (gifName) => {
   let gifUrl;
+  loaderP.textContent = 'icon loading..';
   try {
     const response = await fetch(
       `https://api.giphy.com/v1/gifs/translate?api_key=exNYV0T3ms2qgIprrpcFknteLaWuKHrj&s=${gifName}`,
@@ -59,6 +58,7 @@ const fetchGIF = async (gifName) => {
     if (response.ok) {
       const jsonResponse = await response.json();
       gifUrl = jsonResponse.data.images.original.url;
+      loaderP.textContent = "";
     } else {
       throw new Error("Network response status ", response.statusText);
     }
@@ -75,7 +75,7 @@ const input = document.getElementById("input");
 const btn = document.querySelector("button#search");
 const changeUnits = document.querySelector("section.change-units");
 
-function updateDOM(index, dataFromServer, timeTaken, gifUrl) {
+function updateDOM(index, dataFromServer, timeTaken) {
   const tr = document.createElement("tr");
 
   const th = document.createElement("th");
@@ -110,10 +110,14 @@ function updateDOM(index, dataFromServer, timeTaken, gifUrl) {
 
   const td6 = document.createElement("td");
   const img = document.createElement("img");
-  img.alt = "icon";
-  img.src = gifUrl;
+  let gifName = dataFromServer.dataFromServer.currentConditions.icon;
+
+  if(gifName.includes('-')){
+    gifName = gifName.replace(/-/g, ' ');
+  }
   td6.appendChild(img);
   tr.appendChild(td6);
+  displayGIF(img, gifName);
 
   tbody.appendChild(tr);
 }
@@ -188,3 +192,12 @@ function fahrenheitToCelsius(fahrenheit) {
 function celsiusToFahrenheit(celsius) {
   return ((celsius * 9) / 5 + 32).toFixed(2);
 }
+
+const displayGIF = async (imgElement, gifName) => {
+  const gifUrl = await fetchGIF(gifName);
+  if (gifUrl) {
+    imgElement.src = gifUrl;
+  } else {
+    console.log("No GIF URL returned.");
+  }
+};
